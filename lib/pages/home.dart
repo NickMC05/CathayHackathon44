@@ -1,4 +1,3 @@
-import 'package:cathay/backend/openai.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cathay/components/home_components/option1.dart';
 import 'package:cathay/components/home_components/option2.dart';
@@ -14,8 +13,8 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    Option1(),
+  static List<Widget> _widgetOptions = <Widget>[
+    SurveyPage(),
     Option2(),
     Option3(),
   ];
@@ -41,7 +40,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        leading: Container(),
+        leading: Text(_getTitleForSelectedIndex(_selectedIndex), style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
       ),
       child: SafeArea(
         child: Column(
@@ -63,7 +62,7 @@ class HomePageState extends State<HomePage> {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.book),
-          label: 'Home',
+          label: 'Plan',
         ),
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.search),
@@ -75,5 +74,18 @@ class HomePageState extends State<HomePage> {
         ),
       ],
     );
+  }
+
+  String _getTitleForSelectedIndex(int index) {
+    switch (index) {
+      case 0:
+        return 'Plan';
+      case 1:
+        return 'Option 2';
+      case 2:
+        return 'Option 3';
+      default:
+        return 'Home';
+    }
   }
 }
