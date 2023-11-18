@@ -43,9 +43,6 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        leading: Text(_getTitleForSelectedIndex(_selectedIndex), style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-      ),
       child: SafeArea(
         child: Column(
           children: <Widget>[

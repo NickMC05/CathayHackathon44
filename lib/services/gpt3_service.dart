@@ -28,7 +28,7 @@ Future<String> chatGPT(
 
   if (response.statusCode == 200) {
     final res = jsonDecode(response.body);
-    return res["choices"][0]["message"];
+    return res["choices"][0]["message"]["content"];
   } else {
     return "";
   }
