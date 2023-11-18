@@ -17,6 +17,7 @@ class HomePageState extends State<HomePage> {
     Option1(),
     Option2(),
     Option3(),
+    // GPTChat()
   ];
 
   @override
