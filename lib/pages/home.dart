@@ -1,3 +1,4 @@
+import 'package:cathay/backend/openai.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cathay/components/home_components/option1.dart';
 import 'package:cathay/components/home_components/option2.dart';
