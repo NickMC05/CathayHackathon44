@@ -94,8 +94,9 @@ class _ReportScreenState extends State<ReportScreen> {
                 ),
               ),
               SizedBox(
-                height: 400,
-                child: TodoListWidget(),)
+                height: 220.0,
+                child: TodoListWidget(),),
+              SizedBox(height: 20.0),
               // Text("Report Slider 1"),
             ],
           ),

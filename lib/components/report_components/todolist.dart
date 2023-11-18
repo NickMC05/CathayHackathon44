@@ -17,8 +17,9 @@ class TodoListWidget extends StatefulWidget {
 
 class _TodoListWidgetState extends State<TodoListWidget> {
   final List<TodoItem> _items = [
-    TodoItem(title: 'Task 1', detail: 'Detail 1'),
-    TodoItem(title: 'Task 2', detail: 'Detail 2'),
+    TodoItem(title: 'Oxygen Mask', detail: '2'),
+    TodoItem(title: 'Zyprexa', detail: '14 tablets'),
+    TodoItem(title: 'Vitamin D', detail: '7 tablets'),
     // Add more items here
   ];
 
@@ -31,12 +32,19 @@ class _TodoListWidgetState extends State<TodoListWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(10.0),
       // appBar: AppBar(title: Text('To-Do List')),
+      decoration: BoxDecoration(
+        color: CupertinoColors.systemGrey5,
+        borderRadius: BorderRadius.circular(20)
+      ),
       child: ListView.separated(
         itemCount: _items.length,
         separatorBuilder: (context, index) => Divider(
           height: 1,
           thickness: 1,
+          color: Colors.black,
           indent: MediaQuery.of(context).size.width * 0.1,
           endIndent: MediaQuery.of(context).size.width * 0.1,
         ),
@@ -49,13 +57,20 @@ class _TodoListWidgetState extends State<TodoListWidget> {
                 _toggleTodoItem(index);
               },
             ),
-            title: Text(
-              item.title,
-              style: TextStyle(
-                decoration: item.isDone ? TextDecoration.lineThrough : null,
+            title: Container(
+              padding: EdgeInsets.only(left: 10.0, right: 30.0),
+              child: Row(children: [
+                Text(
+                item.title,
+                style: TextStyle(
+                  decoration: item.isDone ? TextDecoration.lineThrough : null,
+                  fontSize: 20
+                ),
               ),
-            ),
-            subtitle: Text(item.detail),
+              Spacer(),
+              Text(item.detail)
+              ],),
+            )
           );
         },
       )
