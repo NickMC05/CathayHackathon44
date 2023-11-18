@@ -71,7 +71,7 @@ class _ReportScreenState extends State<ReportScreen> {
               ],
             ),
             ),
-            // TodoListWidget()
+            TodoListWidget()
             // Text("Report Slider 1"),
           ],
         )
