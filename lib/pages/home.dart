@@ -48,7 +48,7 @@ Widget build(BuildContext context) {
       middle: Text('Page Title'), // Title
       trailing: CupertinoButton(
         padding: EdgeInsets.zero,
-        child: Icon(CupertinoIcons.add), // Replace with your desired icon
+        child: Icon(CupertinoIcons.profile_circled), // Replace with your desired icon
         onPressed: () {
           // Action to perform on button press
           Navigator.push(
