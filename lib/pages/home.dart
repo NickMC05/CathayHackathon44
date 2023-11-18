@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     const SurveyPage(),
     Option2(),
     // Option3(),
@@ -46,10 +46,10 @@ class HomePageState extends State<HomePage> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         leading: Container(), // Your existing leading widget
-        middle: Text('Page Title'), // Title
+        middle: const Text('Page Title'), // Title
         trailing: CupertinoButton(
           padding: EdgeInsets.zero,
-          child: Icon(
+          child: const Icon(
               CupertinoIcons.profile_circled), // Replace with your desired icon
           onPressed: () {
             // Action to perform on button press

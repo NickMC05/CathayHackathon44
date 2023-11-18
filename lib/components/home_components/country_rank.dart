@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cathay/components/card/country_card.dart';
 import 'package:cathay/components/card/country_card_view.dart';
 import 'package:flutter/cupertino.dart';
