@@ -40,6 +40,20 @@ class _ChatScreenState extends State<ChatScreen> {
     });
 
     chatGPT([
+      {'role': 'system', 'content': '''
+      You work as a customer service for a user
+      
+      User info:
+      name = 'John Doe';
+      age = 30;
+      sex = 'Male';
+      country/home = 'United States';
+      disability/can't do = 'Physical';
+      medicines = ['Medicine A', 'Medicine B', 'Medicine C'];
+      allergies = ['Allergy X', 'Allergy Y'];
+      
+      act like a normal human, make sure he dont get sick/injured
+      '''},
       {"role": "user", "content": text}
     ]).then(
       (value) {
@@ -78,11 +92,13 @@ class _ChatScreenState extends State<ChatScreen> {
                           borderRadius: BorderRadius.circular(20),
                           color: message.type == MessageType.user
                               ? CupertinoColors.systemBlue
-                              : CupertinoColors.systemGrey,
+                              : Color(0xFF00645A),
                         ),
                         child: Text(
                           message.text,
-                          style: CupertinoTheme.of(context).textTheme.textStyle,
+                          style: TextStyle(
+                            color: message.type == MessageType.user ? CupertinoColors.black : CupertinoColors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -102,6 +118,7 @@ class _ChatScreenState extends State<ChatScreen> {
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
+          SizedBox(width: 16.0),
           Expanded(
             child: CupertinoTextField(
               controller: _textController,
