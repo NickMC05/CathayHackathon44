@@ -16,16 +16,26 @@ class Option2 extends StatelessWidget {
   ];
 
   final countries = [
-    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 2345),
-    CountryCard("Beijing, China", 0.91, 0.78, 0.86, 0.92, 0.97, 2545),
-    CountryCard("Singapore", 0.91, 0.78, 0.86, 0.92, 0.97, 986),
-    CountryCard("Bali, Indonesia", 0.91, 0.78, 0.86, 0.92, 0.97, 1344),
-    CountryCard("Islavabat, Pakistani", 0.91, 0.78, 0.86, 0.92, 0.97, 6784),
-    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 1234),
-    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 4321),
-    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 5643),
-    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 753),
-    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 984),
+    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 2345,
+        4.9, "Best in the world"),
+    CountryCard(
+        "Beijing, China", 0.91, 0.78, 0.86, 0.92, 0.97, 2545, 3.2, "sus"),
+    CountryCard(
+        "Singapore", 0.91, 0.78, 0.86, 0.92, 0.97, 986, 1.2, "Very safe"),
+    CountryCard("Bali, Indonesia", 0.91, 0.78, 0.86, 0.92, 0.97, 1344, 3.3,
+        "Safe food"),
+    CountryCard("Islavabat, Pakistani", 0.91, 0.78, 0.86, 0.92, 0.97, 6784, 4.1,
+        "Nice People"),
+    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 1234,
+        5.0, "Best transportation"),
+    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 4321, 5,
+        "Best Hotels"),
+    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 5643, 5,
+        "Best Entertainment"),
+    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 753, 5,
+        "Wheelchair friendly"),
+    CountryCard("Ulaanbaatar, Mongolia", 0.91, 0.78, 0.86, 0.92, 0.97, 984, 5,
+        "Smart City"),
   ];
 
   @override
