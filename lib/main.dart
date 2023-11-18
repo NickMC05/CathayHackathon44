@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: routes,
       theme: const CupertinoThemeData(
-        primaryColor: CupertinoColors.systemBlue,
+        primaryColor: CupertinoColors.activeGreen,
       ),
       localizationsDelegates: const [
         // ... other localization delegates you might be using
