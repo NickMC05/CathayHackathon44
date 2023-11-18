@@ -1,6 +1,7 @@
 import 'package:cathay/backend/openai.dart';
 import 'package:cathay/components/user_profile/profile.dart';
 import 'package:cathay/pages/chat_ai.dart';
+import 'package:cathay/pages/report.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cathay/components/home_components/survey_page.dart';
 import 'package:cathay/components/home_components/country_rank.dart';
@@ -19,9 +20,7 @@ class HomePageState extends State<HomePage> {
   static final List<Widget> _widgetOptions = <Widget>[
     const SurveyPage(),
     Option2(),
-    // Option3(),
     ChatApp()
-    // GPTChat()
   ];
 
   @override
