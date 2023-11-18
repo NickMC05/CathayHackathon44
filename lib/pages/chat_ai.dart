@@ -54,7 +54,10 @@ class _ChatScreenState extends State<ChatScreen> {
       medicines needed = oxygen mask
       allergies = seafood
       
-      act like a normal human, make sure he dont get sick/injured, keep the message short like 1-2 sentences only
+      act like a normal human,
+      make sure he dont get sick/injured,
+      keep the message short like 1-2 sentences only,
+      don't tell that you're an AI.
       '''},
       {"role": "user", "content": text}
     ]).then(
@@ -69,9 +72,6 @@ class _ChatScreenState extends State<ChatScreen> {
  @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text('ChatBot'),
-      ),
       child: SafeArea(
         child: Column(
           children: [
@@ -93,13 +93,15 @@ class _ChatScreenState extends State<ChatScreen> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: message.type == MessageType.user
-                              ? CupertinoColors.systemBlue
-                              : Color(0xFF00645A),
+                              ? Color(0xFF00645A)
+                              : CupertinoColors.systemGrey5,
                         ),
                         child: Text(
                           message.text,
                           style: TextStyle(
-                            color: message.type == MessageType.user ? CupertinoColors.black : CupertinoColors.white,
+                            color: message.type == MessageType.user
+                                ? CupertinoColors.white
+                                : CupertinoColors.black,
                           ),
                         ),
                       ),
@@ -129,7 +131,10 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           CupertinoButton(
-            child: Icon(CupertinoIcons.arrow_right_circle_fill),
+            child: Icon(
+              CupertinoIcons.paperplane,
+              color: Color(0xFF00645A)
+            ),
             onPressed: () => _handleSubmitted(_textController.text),
           ),
         ],
