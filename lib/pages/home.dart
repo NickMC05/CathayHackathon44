@@ -18,7 +18,7 @@ class HomePageState extends State<HomePage> {
 
   static List<Widget> _widgetOptions = <Widget>[
     const SurveyPage(),
-    const Option2(),
+    Option2(),
     // Option3(),
     ChatApp()
     // GPTChat()
