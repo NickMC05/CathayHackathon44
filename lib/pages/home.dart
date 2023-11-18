@@ -1,4 +1,5 @@
 import 'package:cathay/backend/openai.dart';
+import 'package:cathay/components/user_profile/profile.dart';
 import 'package:cathay/pages/chat_ai.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cathay/components/home_components/survey_page.dart';
@@ -39,22 +40,36 @@ class HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: _widgetOptions.elementAt(_selectedIndex),
-            ),
-            _buildBottomNavigationBar(),
-          ],
-        ),
+@override
+Widget build(BuildContext context) {
+  return CupertinoPageScaffold(
+    navigationBar: CupertinoNavigationBar(
+      leading: Container(), // Your existing leading widget
+      middle: Text('Page Title'), // Title
+      trailing: CupertinoButton(
+        padding: EdgeInsets.zero,
+        child: Icon(CupertinoIcons.profile_circled), // Replace with your desired icon
+        onPressed: () {
+          // Action to perform on button press
+          Navigator.push(
+            context,
+            CupertinoPageRoute(builder: (context) => Profile()), // Replace with your target widget
+          );
+        },
       ),
-    );
-  }
+    ),
+    child: SafeArea(
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: _widgetOptions.elementAt(_selectedIndex),
+          ),
+          _buildBottomNavigationBar(),
+        ],
+      ),
+    ),
+  );
+}
 
   Widget _buildBottomNavigationBar() {
     return CupertinoTabBar(
