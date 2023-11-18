@@ -6,7 +6,16 @@ class CountryCard {
   double transportation = 0;
   double entertainment = 0;
   double price = 0;
-
-  CountryCard(this.title, this.score, this.safety, this.accomodation,
-      this.transportation, this.entertainment, this.price);
+  double review = 0;
+  String tag = "";
+  CountryCard(
+      this.title,
+      this.score,
+      this.safety,
+      this.accomodation,
+      this.transportation,
+      this.entertainment,
+      this.price,
+      this.review,
+      this.tag);
 }

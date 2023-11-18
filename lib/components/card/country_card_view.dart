@@ -76,46 +76,38 @@ class CountryRankView extends StatelessWidget {
                           style: const TextStyle(
                               fontWeight: FontWeight.w600, fontSize: 20),
                         ),
-                        Text("Accessibility: ${info.score * 100}/100"),
+                        Text("AI Score: ${info.score * 100}/100"),
                         Expanded(
                             child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Row(children: [
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.car_crash,
-                                color: Colors.black,
+                              Icon(
+                                Icons.star,
+                                color: Colors.yellow.shade700,
                               ),
-                              const SizedBox(width: 5),
-                              Text(info.transportation.toString()),
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.car_crash,
-                                color: Colors.black,
+                              Text(
+                                info.review.toString(),
+                                style: TextStyle(color: Colors.yellow.shade700),
                               ),
-                              const SizedBox(width: 5),
-                              Text(info.transportation.toString()),
+                              const Text(" (47) reviews")
                             ]),
-                            Row(children: [
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.hotel,
-                                color: Colors.black,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(info.accomodation.toString()),
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.car_crash,
-                                color: Colors.black,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(info.transportation.toString()),
-                            ]),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: const Color(0xff57B48D)),
+                              child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 4),
+                                  child: Text(
+                                    info.tag,
+                                    style: const TextStyle(color: Colors.white),
+                                  )),
+                            ),
                           ],
                         )),
-                        Text("Start From: ${info.price}HKD"),
+                        Text("Ticket price: ${info.price}HKD"),
                         const SizedBox(height: 10),
                       ],
                     ),
@@ -126,6 +118,30 @@ class CountryRankView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class GradientText extends StatelessWidget {
+  const GradientText(
+    this.text, {
+    super.key,
+    required this.gradient,
+    this.style,
+  });
+
+  final String text;
+  final TextStyle? style;
+  final Gradient gradient;
+
+  @override
+  Widget build(BuildContext context) {
+    return ShaderMask(
+      blendMode: BlendMode.srcIn,
+      shaderCallback: (bounds) => gradient.createShader(
+        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+      ),
+      child: Text(text, style: style),
     );
   }
 }
