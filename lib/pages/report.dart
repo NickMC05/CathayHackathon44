@@ -7,9 +7,8 @@ import 'package:flutter/material.dart';
 class ReportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      title: 'Report Card',
-      home: ReportScreen(),
+    return CupertinoPageScaffold(
+      child: ReportScreen(),
     );
   }
 }

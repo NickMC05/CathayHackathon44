@@ -1,19 +1,21 @@
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart'; // Needed for NetworkImage
 
-
-class GradualBlurCard extends StatelessWidget {
+class TripImage extends StatelessWidget {
+  final String imagePath;
+  final String imageTitle;
+  const TripImage({super.key, required this.imagePath, required this.imageTitle});
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 360,
-      height: 220,
+      height: 300,
+      width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10), // Rounded corners for the card
         image: DecorationImage(
-          image: NetworkImage('https://images.pexels.com/photos/46148/aircraft-jet-landing-cloud-46148.jpeg?cs=srgb&dl=pexels-pixabay-46148.jpg&fm=jpg'),
-          fit: BoxFit.cover,
+          image: AssetImage(imagePath),
+          fit: BoxFit.fitHeight,
         ),
       ),
       child: Stack(
@@ -26,7 +28,7 @@ class GradualBlurCard extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [CupertinoColors.systemGrey6.withOpacity(0), CupertinoColors.systemGrey6.withOpacity(0.8)],
+                    colors: [CupertinoColors.systemGrey6.withOpacity(0), const Color.fromARGB(255, 79, 79, 81).withOpacity(0.2)],
                   ),
                 ),
               ),
@@ -41,14 +43,12 @@ class GradualBlurCard extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 alignment: Alignment.center,
                 child: Row(children: [
-                Icon(CupertinoIcons.battery_25, color: CupertinoColors.destructiveRed, size: 30),
-                SizedBox(width: 10,),
                 Text(
-                  'Charge wheelchair before trip!',
+                  imageTitle,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: CupertinoColors.black,
-                    fontSize: 18,
+                    color: CupertinoColors.white,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

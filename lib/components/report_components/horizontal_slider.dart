@@ -23,34 +23,42 @@ class HorizontalSlider extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 3, // Number of cards
         itemBuilder: (context, index) {
-          return Container(
-            // width: cardWidth,
-            height: 110,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              // color: Colors.grey[300],
+          return GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/trip_details', arguments: {
+                'image_path': imagePaths[index],
+                'image_title': image_title[index]
+              });
+            },
+            child: Container(
+              // width: cardWidth,
+              height: 110,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                // color: Colors.grey[300],
+              ),
+              margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+              child: Column(
+                    children: [
+                      Card(
+                        child:Container(
+                          width: 230,
+                          height: 110,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            // color: Colors.grey[300],
+                          ),
+                          child: 
+                              Image.asset(
+                                imagePaths[index], // Replace with your image URL
+                                fit: BoxFit.cover,)
+                          ),
+                      ),
+                      SizedBox(height: 10.0),
+                      Text(image_title[index])
+                    ],
+                  )
             ),
-            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-            child: Column(
-                  children: [
-                    Card(
-                      child:Container(
-                        width: 230,
-                        height: 110,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          // color: Colors.grey[300],
-                        ),
-                        child: 
-                            Image.asset(
-                              imagePaths[index], // Replace with your image URL
-                              fit: BoxFit.cover,)
-                        ),
-                    ),
-                    SizedBox(height: 10.0),
-                    Text(image_title[index])
-                  ],
-                )
           );
         },
       ),
