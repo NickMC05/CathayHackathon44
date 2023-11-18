@@ -118,3 +118,9 @@ flutter:
 
   assets:
     - lib/components/user_profile/profile_picture.png
+    - assets/british_museum.jpg
+    - assets/clouds.jpg
+    - assets/hotels.jpg
+    - assets/shangri-la.jpg
+    - assets/wheelchair_taxis_london.png
+    - assets/wheelchair.jpg

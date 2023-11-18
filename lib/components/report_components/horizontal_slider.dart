@@ -5,12 +5,18 @@ class HorizontalSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     // Calculate the width of the card. Assuming 2.5 cards are visible at a time.
     double cardWidth = MediaQuery.of(context).size.width / 2.5;
+    final List<String> imagePaths = [
+      'assets/wheelchair_taxis_london.png',
+      'assets/shangri-la.jpg',
+      'assets/british_museum.jpg',
+    ];
+
 
     return Container(
       height: 200, // Adjust the height as needed
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10, // Number of cards
+        itemCount: 3, // Number of cards
         itemBuilder: (context, index) {
           return Container(
             // width: cardWidth,
@@ -22,12 +28,13 @@ class HorizontalSlider extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: Card(
                 child: Container(
+                  width: 230,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 // color: Colors.grey[300],
               ),
-              child: Image.network(
-                'https://www.syfy.com/sites/syfy/files/styles/scale_1280/public/2019/11/courage-the-cowardly-dog.jpg', // Replace with your image URL
+              child: Image.asset(
+                imagePaths[index], // Replace with your image URL
                 fit: BoxFit.cover,
               ),
             )),
