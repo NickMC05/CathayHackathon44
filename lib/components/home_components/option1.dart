@@ -1,10 +1,32 @@
+import 'package:cathay/services/gpt3_service.dart';
 import 'package:flutter/cupertino.dart';
 
 class Option1 extends StatelessWidget {
-  const Option1({ super.key });
+  const Option1({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: CupertinoColors.systemGrey);
+    String text = "";
+    return CupertinoPageScaffold(
+      child: Center(
+          child: Column(
+        children: [
+          Text(text),
+          CupertinoButton(
+            child: const Text('Run'),
+            onPressed: () async {
+              mickey();
+            },
+          ),
+        ],
+      )),
+    );
   }
 }
+//  response = await chatGPT([
+//         {
+//           "role": "user",
+//           "content":
+//               "Please rephrase the sentences below to be under 25 words, keep the original tone:\n  $response"
+//         }
+//       ]);
