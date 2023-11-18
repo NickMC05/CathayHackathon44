@@ -1,5 +1,7 @@
 import 'package:cathay/services/gpt3_service.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+// import 'package:flutter/material.dart';
+
 
 enum MessageType { user, ai }
 
@@ -15,7 +17,7 @@ void main() => runApp(ChatApp());
 class ChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return CupertinoApp(
       title: 'Flutter ChatBot',
       home: ChatScreen(),
     );
@@ -34,7 +36,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void _handleSubmitted(String text) {
     _textController.clear();
     setState(() {
-      _messages.insert(0, ChatMessage(text: text, type: MessageType.user));
+      _messages.add(ChatMessage(text: text, type: MessageType.user));
     });
 
     chatGPT([
@@ -43,75 +45,75 @@ class _ChatScreenState extends State<ChatScreen> {
       (value) {
         print(value);
         setState(() {
-          _messages.insert(0, ChatMessage(text: value, type: MessageType.ai));
+          _messages.add(ChatMessage(text: value, type: MessageType.ai));
         });
       },
     );
   }
-
-  @override
+ @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('ChatBot')),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              reverse: true,
-              itemCount: _messages.length,
-              itemBuilder: (context, index) {
-                final message = _messages[index];
-                return ListTile(
-                  title: Align(
-                    alignment: message.type == MessageType.user
-                        ? Alignment.centerRight
-                        : Alignment.centerLeft,
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: message.type == MessageType.user
-                            ? Colors.blue[100]
-                            : Colors.grey[300],
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text('ChatBot'),
+      ),
+      child: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: _messages.length,
+                itemBuilder: (context, index) {
+                  final message = _messages[index];
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                    child: Align(
+                      alignment: message.type == MessageType.user
+                          ? Alignment.centerRight
+                          : Alignment.centerLeft,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: message.type == MessageType.user
+                              ? CupertinoColors.systemBlue
+                              : CupertinoColors.systemGrey,
+                        ),
+                        child: Text(
+                          message.text,
+                          style: CupertinoTheme.of(context).textTheme.textStyle,
+                        ),
                       ),
-                      child: Text(message.text),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-          Divider(height: 1.0),
-          Container(
-            child: _buildTextComposer(),
-          ),
-        ],
+            _buildCupertinoTextComposer(),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildTextComposer() {
-    return IconTheme(
-      data: IconThemeData(color: Theme.of(context).primaryColor),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
-          children: [
-            Flexible(
-              child: TextField(
-                controller: _textController,
-                onSubmitted: _handleSubmitted,
-                decoration:
-                    InputDecoration.collapsed(hintText: 'Send a message'),
-              ),
+  Widget _buildCupertinoTextComposer() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: CupertinoTextField(
+              controller: _textController,
+              onSubmitted: _handleSubmitted,
+              placeholder: 'Send a message',
             ),
-            IconButton(
-              icon: Icon(Icons.send),
-              onPressed: () => _handleSubmitted(_textController.text),
-            ),
-          ],
-        ),
+          ),
+          CupertinoButton(
+            child: Icon(CupertinoIcons.arrow_right_circle_fill),
+            onPressed: () => _handleSubmitted(_textController.text),
+          ),
+        ],
       ),
     );
   }

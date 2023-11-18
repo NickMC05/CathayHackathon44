@@ -6,7 +6,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('New Page'),
+        middle: Text('Profile'),
       ),
       child: Center(
         child: Text('This is the new page'),
