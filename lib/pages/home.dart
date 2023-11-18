@@ -1,3 +1,4 @@
+import 'package:cathay/backend/openai.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cathay/components/home_components/option1.dart';
 import 'package:cathay/components/home_components/option2.dart';
@@ -40,7 +41,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('Home Page'),
+        leading: Container(),
       ),
       child: SafeArea(
         child: Column(
@@ -62,7 +63,7 @@ class HomePageState extends State<HomePage> {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.book),
-          label: 'Option 1',
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.search),
