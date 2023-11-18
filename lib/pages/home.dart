@@ -3,7 +3,7 @@ import 'package:cathay/components/user_profile/profile.dart';
 import 'package:cathay/pages/chat_ai.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cathay/components/home_components/survey_page.dart';
-import 'package:cathay/components/home_components/option2.dart';
+import 'package:cathay/components/home_components/country_rank.dart';
 import 'package:cathay/components/home_components/option3.dart';
 
 class HomePage extends StatefulWidget {
