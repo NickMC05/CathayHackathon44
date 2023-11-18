@@ -47,6 +47,10 @@ class _SurveyPageState extends ConsumerState<SurveyPage> {
           _currentIndex++;
         });
       }
+      else {
+        // Submit survey
+        ref.read(surveyProvider.notifier).submitSurvey(context);
+      }
     }
 
     return Column(

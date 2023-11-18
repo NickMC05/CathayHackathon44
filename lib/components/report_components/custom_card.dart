@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'; // Needed for NetworkImage
 
-void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override

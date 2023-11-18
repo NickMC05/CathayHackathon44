@@ -18,7 +18,7 @@ class HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    ReportPage(),
+    const SurveyPage(),
     Option2(),
     ChatApp()
   ];

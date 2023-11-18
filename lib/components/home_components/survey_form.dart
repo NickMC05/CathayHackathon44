@@ -10,9 +10,7 @@ class SurveyForm extends ConsumerStatefulWidget {
   final void Function() toNextQuestion;
 
   const SurveyForm(
-      {Key? key,
-      required this.questionDetails,
-      required this.toNextQuestion})
+      {Key? key, required this.questionDetails, required this.toNextQuestion})
       : super(key: key);
 
   @override
@@ -22,6 +20,17 @@ class SurveyForm extends ConsumerStatefulWidget {
 class _SurveyFormState extends ConsumerState<SurveyForm> {
   String? selectedChoice; // For single-select
   Set<String> selectedChoices = {}; // For multi-select
+
+  // Function to check if a valid selection has been made
+  bool isSelectionMade() {
+    final String questionType = widget.questionDetails.type;
+    if (questionType == "single-select" || questionType == "country-select") {
+      return selectedChoice != null && selectedChoice!.isNotEmpty;
+    } else if (questionType == "multi-select") {
+      return selectedChoices.isNotEmpty;
+    }
+    return false; // For other types, or default case
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +55,6 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
                     child: _buildChoice("Country", questionType),
                   ))
               : Container(),
-
-
           ...widget.questionDetails.choices
               .map((choice) => Padding(
                     padding: const EdgeInsets.symmetric(
@@ -57,27 +64,38 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(4.0),
                           child: _buildChoice(choice, questionType),
                         )),
                   ))
               .toList(),
           const SizedBox(height: 20),
           CupertinoButton(
-            color: Colors.blue,
+              color: Colors.blue,
               child: const Text("Submit"),
-              onPressed: () {
-                if (questionType == "single-select" || questionType == "country-select") {
-                  ref.read(surveyProvider.notifier).modifySurveyAnswer(
-                      widget.questionDetails.question, [selectedChoice!]);
-                } else if (questionType == "multi-select") {
-                  ref.read(surveyProvider.notifier).modifySurveyAnswer(
-                      widget.questionDetails.question,
-                      selectedChoices.toList());
-                }
+              onPressed: isSelectionMade()
+                  ? () {
+                      if (questionType == "single-select") {
+                        ref.read(surveyProvider.notifier).modifySurveyAnswer(
+                            widget.questionDetails.question, [selectedChoice!]);
+                      }
+                      widget.toNextQuestion();
+                    }
+                  : () {
+                      if (questionType == "multi-select") {
+                        ref.read(surveyProvider.notifier).modifySurveyAnswer(
+                            widget.questionDetails.question,
+                            selectedChoices.toList());
+                        widget.toNextQuestion();
+                      }
+                      if (questionType == "country-select") {
+                        ref.read(surveyProvider.notifier).modifySurveyAnswer(
+                            widget.questionDetails.question,
+                            [selectedChoice ?? "+62"]);
+                        widget.toNextQuestion();
 
-                widget.toNextQuestion();
-              })
+                      }
+                    })
         ],
       ),
     );
@@ -100,7 +118,6 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
 
   Widget _buildChoice(String choice, String type) {
     if (type == "single-select") {
-      // Your existing single-select code
       return RadioListTile<String>(
         title: Text(choice,
             style: const TextStyle(
@@ -116,17 +133,14 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
         },
       );
     } else if (type == "multi-select") {
-      // Modified multi-select code
       return CheckboxListTile(
         title: Text(choice,
             style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 24)),
-
         value: selectedChoices.contains(choice),
-        controlAffinity: ListTileControlAffinity
-            .leading, // This line positions the checkbox on the left
+        controlAffinity: ListTileControlAffinity.leading,
         onChanged: (bool? value) {
           setState(() {
             if (value == true) {
@@ -147,7 +161,7 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
           showEnglishName: true,
           labelColor: Colors.black,
         ),
-        initialSelection: selectedChoice,
+        initialSelection: selectedChoice ?? "+62",
         onChanged: (CountryCode? code) {
           setState(() {
             selectedChoice = code!.dialCode;
