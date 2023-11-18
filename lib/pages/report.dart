@@ -1,4 +1,5 @@
 import 'package:cathay/components/report_components/custom_card.dart';
+import 'package:cathay/components/report_components/emoji_slider.dart';
 import 'package:cathay/components/report_components/horizontal_slider.dart';
 import 'package:cathay/components/report_components/todolist.dart';
 import 'package:flutter/cupertino.dart';
@@ -43,7 +44,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 child: const Row(
                   children: [
                     Text(
-                      "Docs",
+                      "Documents",
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 24,
@@ -65,7 +66,8 @@ class _ReportScreenState extends State<ReportScreen> {
                 ),
               ),
               // Text("Report Slider 1"),
-              HorizontalSlider(),
+              // HorizontalSlider(),
+              EmojiSlider(),
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: const Row(

@@ -49,7 +49,10 @@ class HomePageState extends State<HomePage> {
         trailing: CupertinoButton(
           padding: EdgeInsets.zero,
           child: const Icon(
-              CupertinoIcons.profile_circled), // Replace with your desired icon
+            CupertinoIcons.profile_circled,
+            color: Color(0xFF00645A),
+            size: 35,
+          ), // Replace with your desired icon
           onPressed: () {
             // Action to perform on button press
             Navigator.push(
@@ -80,15 +83,24 @@ class HomePageState extends State<HomePage> {
       onTap: _onItemTapped,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.book),
+          icon: Icon(
+            CupertinoIcons.book,
+            color: Color(0xFF00645A),
+          ),
           label: 'Plan',
         ),
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.search),
-          label: 'Option 2',
+          icon: Icon(
+            CupertinoIcons.search,
+            color: Color(0xFF00645A),
+          ),
+          label: 'Recommendations',
         ),
         BottomNavigationBarItem(
-          icon: Icon(CupertinoIcons.chat_bubble),
+          icon: Icon(
+            CupertinoIcons.chat_bubble,
+            color: Color(0xFF00645A),
+          ),
           label: 'Chatbot',
         ),
       ],

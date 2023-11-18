@@ -12,7 +12,7 @@ class GradualBlurCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10), // Rounded corners for the card
         image: DecorationImage(
-          image: NetworkImage('https://images.pexels.com/photos/46148/aircraft-jet-landing-cloud-46148.jpeg?cs=srgb&dl=pexels-pixabay-46148.jpg&fm=jpg'),
+          image: Image.asset('assets/wheelchair_taxis_london.png').image,
           fit: BoxFit.cover,
         ),
       ),

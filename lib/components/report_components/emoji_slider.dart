@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-class HorizontalSlider extends StatelessWidget {
+class EmojiSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Calculate the width of the card. Assuming 2.5 cards are visible at a time.
     double cardWidth = MediaQuery.of(context).size.width / 2.5;
-    final List<String> imagePaths = [
-      'assets/wheelchair_taxis_london.png',
-      'assets/shangri-la.jpg',
-      'assets/british_museum.jpg',
+    final List<String> display = [
+      "🐶",
+      "💬",
+      "🛡️"
     ];
 
     final List<String> image_title = [
-      'Wheelchair taxi',
-      'Shangri-la',
-      'British Museums'
+      'Guide Dog Import',
+      'Assistance Request Form',
+      'Insurance Coverage'
     ];
 
-    return Container(
+    return SizedBox(
       height: 200, // Adjust the height as needed
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -42,12 +42,11 @@ class HorizontalSlider extends StatelessWidget {
                         // color: Colors.grey[300],
                       ),
                       child: 
-                          Image.asset(
-                            imagePaths[index], // Replace with your image URL
-                            fit: BoxFit.cover,)
-                      ),
-                  ),
-                  SizedBox(height: 10.0),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(display[index], style: TextStyle(fontSize: 84),)
+                    ))),
+                  const SizedBox(height: 10.0),
                   Text(image_title[index])
                 ],
                 )
