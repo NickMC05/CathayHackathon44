@@ -14,7 +14,7 @@ class OpenAI {
         'Content-Type': 'application/json',
         'api-key': apiKey,
       },
-      body: jsonEncode({'prompt': prompt, 'max_tokens': 100}),
+      body: jsonEncode({'prompt': prompt, 'max_tokens': 800}),
     );
 
     if (response.statusCode == 200) {
