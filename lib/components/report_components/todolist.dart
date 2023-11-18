@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TodoItem {
@@ -29,9 +30,9 @@ class _TodoListWidgetState extends State<TodoListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('To-Do List')),
-      body: ListView.separated(
+    return Container(
+      // appBar: AppBar(title: Text('To-Do List')),
+      child: ListView.separated(
         itemCount: _items.length,
         separatorBuilder: (context, index) => Divider(
           height: 1,
@@ -41,8 +42,8 @@ class _TodoListWidgetState extends State<TodoListWidget> {
         ),
         itemBuilder: (context, index) {
           final item = _items[index];
-          return ListTile(
-            leading: Checkbox(
+          return CupertinoListTile(
+            leading: CupertinoCheckbox(
               value: item.isDone,
               onChanged: (bool? newValue) {
                 _toggleTodoItem(index);
@@ -57,8 +58,7 @@ class _TodoListWidgetState extends State<TodoListWidget> {
             subtitle: Text(item.detail),
           );
         },
-      ),
-      backgroundColor: Colors.grey,
+      )
     );
   }
 }
