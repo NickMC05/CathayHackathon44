@@ -73,10 +73,12 @@ class _SurveyPageState extends ConsumerState<SurveyPage> {
             ),
           ),
         ),
-        Expanded(
-          child: SurveyForm(
-            questionDetails: questions[_currentIndex],
-            toNextQuestion: nextQuestion,
+        SingleChildScrollView(
+          child: Expanded(
+            child: SurveyForm(
+              questionDetails: questions[_currentIndex],
+              toNextQuestion: nextQuestion,
+            ),
           ),
         )
       ],

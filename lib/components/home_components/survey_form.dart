@@ -62,7 +62,9 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
                         )),
                   ))
               .toList(),
+          const SizedBox(height: 20),
           CupertinoButton(
+            color: Colors.blue,
               child: const Text("Submit"),
               onPressed: () {
                 if (questionType == "single-select" || questionType == "country-select") {
@@ -101,7 +103,7 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
       // Your existing single-select code
       return RadioListTile<String>(
         title: Text(choice,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 24)),
@@ -117,7 +119,7 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
       // Modified multi-select code
       return CheckboxListTile(
         title: Text(choice,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 24)),
@@ -153,7 +155,7 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
         },
       );
     } else {
-      return Text("Error: Invalid type");
+      return const Text("Error: Invalid type");
     }
   }
 }
