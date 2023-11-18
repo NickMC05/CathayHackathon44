@@ -30,33 +30,8 @@ class CountryRankView extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: SizedBox(
-                      width: 150,
-                      height: 200,
-                      child: Image.network(
-                          "https://picsum.photos/id/${random.nextInt(500)}/150/200/"),
-                    ),
-                  ),
-                  Positioned(
-                    left: 10,
-                    bottom: 20,
-                    child: Container(
-                      height: 30,
-                      width: 70,
-                      decoration: BoxDecoration(
-                        color: const Color(0xff57B48D),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Rank #$ranking",
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  RandomPicture(random: random),
+                  RankTagView(ranking: ranking),
                 ],
               ),
               Expanded(
@@ -82,29 +57,8 @@ class CountryRankView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Row(children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.yellow.shade700,
-                              ),
-                              Text(
-                                info.review.toString(),
-                                style: TextStyle(color: Colors.yellow.shade700),
-                              ),
-                              const Text(" (47) reviews")
-                            ]),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: const Color(0xff57B48D)),
-                              child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 4),
-                                  child: Text(
-                                    info.tag,
-                                    style: const TextStyle(color: Colors.white),
-                                  )),
-                            ),
+                            ReviewRow(info: info),
+                            TagContainer(info: info),
                           ],
                         )),
                         Text("Ticket price: ${info.price}HKD"),
@@ -122,26 +76,103 @@ class CountryRankView extends StatelessWidget {
   }
 }
 
-class GradientText extends StatelessWidget {
-  const GradientText(
-    this.text, {
+class TagContainer extends StatelessWidget {
+  const TagContainer({
     super.key,
-    required this.gradient,
-    this.style,
+    required this.info,
   });
 
-  final String text;
-  final TextStyle? style;
-  final Gradient gradient;
+  final CountryCard info;
 
   @override
   Widget build(BuildContext context) {
-    return ShaderMask(
-      blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) => gradient.createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: const Color(0xff57B48D)),
+      child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          child: Text(
+            info.tag,
+            style: const TextStyle(color: Colors.white),
+          )),
+    );
+  }
+}
+
+class ReviewRow extends StatelessWidget {
+  const ReviewRow({
+    super.key,
+    required this.info,
+  });
+
+  final CountryCard info;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
+      Icon(
+        Icons.star,
+        color: Colors.yellow.shade700,
       ),
-      child: Text(text, style: style),
+      Text(
+        info.review.toString(),
+        style: TextStyle(color: Colors.yellow.shade700),
+      ),
+      const Text(" (47) reviews")
+    ]);
+  }
+}
+
+class RandomPicture extends StatelessWidget {
+  const RandomPicture({
+    super.key,
+    required this.random,
+  });
+
+  final Random random;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: SizedBox(
+        width: 150,
+        height: 200,
+        child: Image.network(
+            "https://picsum.photos/id/${random.nextInt(500)}/150/200/"),
+      ),
+    );
+  }
+}
+
+class RankTagView extends StatelessWidget {
+  const RankTagView({
+    super.key,
+    required this.ranking,
+  });
+
+  final int ranking;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      left: 10,
+      bottom: 20,
+      child: Container(
+        height: 30,
+        width: 70,
+        decoration: BoxDecoration(
+          color: const Color(0xff57B48D),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(
+          child: Text(
+            "Rank #$ranking",
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
     );
   }
 }

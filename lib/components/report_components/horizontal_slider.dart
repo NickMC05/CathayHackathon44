@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class HorizontalSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,21 +19,18 @@ class HorizontalSlider extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               // color: Colors.grey[300],
             ),
-            margin: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: Card(
-              child: 
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    // color: Colors.grey[300],
-                  ),
-                  child: Image.network(
-                    'https://www.syfy.com/sites/syfy/files/styles/scale_1280/public/2019/11/courage-the-cowardly-dog.jpg', // Replace with your image URL
-                    fit: BoxFit.cover,
-                ),
-                 )
-              
-            ),
+                child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                // color: Colors.grey[300],
+              ),
+              child: Image.network(
+                'https://www.syfy.com/sites/syfy/files/styles/scale_1280/public/2019/11/courage-the-cowardly-dog.jpg', // Replace with your image URL
+                fit: BoxFit.cover,
+              ),
+            )),
           );
         },
       ),
