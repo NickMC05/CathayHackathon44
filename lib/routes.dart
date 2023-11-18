@@ -1,5 +1,6 @@
 
 
+import 'package:cathay/components/country_details/country_statistics.dart';
 import 'package:cathay/pages/home.dart';
 import 'package:cathay/pages/report.dart';
 import 'package:cathay/pages/trip_details.dart';
@@ -9,4 +10,5 @@ final Map<String, WidgetBuilder> routes = {
   '/': (BuildContext context) => const HomePage(),
   '/report': (BuildContext context) => ReportPage(),
   '/trip_details': (BuildContext context) => const TripDetailsPage(),
+  '/country_statistics': (BuildContext context) => const CountryStatisticsPage(),
 };

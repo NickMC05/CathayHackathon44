@@ -63,7 +63,7 @@ class TripDetailsPage extends StatelessWidget {
               left: 0,
               right: 0,
               child: AppBar(
-                iconTheme: IconThemeData(
+                iconTheme: const IconThemeData(
                   color: Color.fromARGB(255, 118, 117, 117), //change your color here
                 ),
                 backgroundColor: Colors.transparent, // Set to transparent color

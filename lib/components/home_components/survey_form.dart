@@ -79,6 +79,11 @@ class _SurveyFormState extends ConsumerState<SurveyForm> {
                         ref.read(surveyProvider.notifier).modifySurveyAnswer(
                             widget.questionDetails.question, [selectedChoice!]);
                       }
+                      if (questionType == "multi-select") {
+                        ref.read(surveyProvider.notifier).modifySurveyAnswer(
+                            widget.questionDetails.question,
+                            selectedChoices.toList());
+                      }
                       widget.toNextQuestion();
                     }
                   : () {

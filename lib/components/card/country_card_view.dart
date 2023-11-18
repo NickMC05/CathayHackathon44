@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:cathay/components/card/country_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CountryRankView extends StatelessWidget {
@@ -17,7 +16,9 @@ class CountryRankView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, "/country_statistics", arguments: {"image_path" : "", "image_title" : ""});
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
         child: Card(

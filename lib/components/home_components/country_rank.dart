@@ -3,8 +3,8 @@ import 'package:cathay/components/card/country_card_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Option2 extends StatelessWidget {
-  Option2({super.key});
+class Recommendations extends StatelessWidget {
+  Recommendations ({super.key});
 
   static const List<String> topRow = [
     "All",

@@ -46,8 +46,7 @@ class _SurveyPageState extends ConsumerState<SurveyPage> {
         setState(() {
           _currentIndex++;
         });
-      }
-      else {
+      } else {
         // Submit survey
         ref.read(surveyProvider.notifier).submitSurvey(context);
       }
