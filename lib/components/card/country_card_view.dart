@@ -30,33 +30,8 @@ class CountryRankView extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: SizedBox(
-                      width: 150,
-                      height: 200,
-                      child: Image.network(
-                          "https://picsum.photos/id/${random.nextInt(500)}/150/200/"),
-                    ),
-                  ),
-                  Positioned(
-                    left: 10,
-                    bottom: 20,
-                    child: Container(
-                      height: 30,
-                      width: 70,
-                      decoration: BoxDecoration(
-                        color: const Color(0xff57B48D),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Rank #$ranking",
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  RandomPicture(random: random),
+                  RankTagView(ranking: ranking),
                 ],
               ),
               Expanded(
@@ -76,46 +51,17 @@ class CountryRankView extends StatelessWidget {
                           style: const TextStyle(
                               fontWeight: FontWeight.w600, fontSize: 20),
                         ),
-                        Text("Accessibility: ${info.score * 100}/100"),
+                        Text("AI Score: ${info.score * 100}/100"),
                         Expanded(
                             child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Row(children: [
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.car_crash,
-                                color: Colors.black,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(info.transportation.toString()),
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.car_crash,
-                                color: Colors.black,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(info.transportation.toString()),
-                            ]),
-                            Row(children: [
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.hotel,
-                                color: Colors.black,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(info.accomodation.toString()),
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.car_crash,
-                                color: Colors.black,
-                              ),
-                              const SizedBox(width: 5),
-                              Text(info.transportation.toString()),
-                            ]),
+                            ReviewRow(info: info),
+                            TagContainer(info: info),
                           ],
                         )),
-                        Text("Start From: ${info.price}HKD"),
+                        Text("Ticket price: ${info.price}HKD"),
                         const SizedBox(height: 10),
                       ],
                     ),
@@ -123,6 +69,107 @@ class CountryRankView extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class TagContainer extends StatelessWidget {
+  const TagContainer({
+    super.key,
+    required this.info,
+  });
+
+  final CountryCard info;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: const Color(0xff57B48D)),
+      child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          child: Text(
+            info.tag,
+            style: const TextStyle(color: Colors.white),
+          )),
+    );
+  }
+}
+
+class ReviewRow extends StatelessWidget {
+  const ReviewRow({
+    super.key,
+    required this.info,
+  });
+
+  final CountryCard info;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
+      Icon(
+        Icons.star,
+        color: Colors.yellow.shade700,
+      ),
+      Text(
+        info.review.toString(),
+        style: TextStyle(color: Colors.yellow.shade700),
+      ),
+      const Text(" (47) reviews")
+    ]);
+  }
+}
+
+class RandomPicture extends StatelessWidget {
+  const RandomPicture({
+    super.key,
+    required this.random,
+  });
+
+  final Random random;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: SizedBox(
+        width: 150,
+        height: 200,
+        child: Image.network(
+            "https://picsum.photos/id/${random.nextInt(500)}/150/200/"),
+      ),
+    );
+  }
+}
+
+class RankTagView extends StatelessWidget {
+  const RankTagView({
+    super.key,
+    required this.ranking,
+  });
+
+  final int ranking;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      left: 10,
+      bottom: 20,
+      child: Container(
+        height: 30,
+        width: 70,
+        decoration: BoxDecoration(
+          color: const Color(0xff57B48D),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(
+          child: Text(
+            "Rank #$ranking",
+            style: const TextStyle(color: Colors.white),
           ),
         ),
       ),
