@@ -12,7 +12,7 @@ class ChatMessage {
   ChatMessage({required this.text, required this.type});
 }
 
-void main() => runApp(ChatApp());
+// void main() => runApp(ChatApp());
 
 class ChatApp extends StatelessWidget {
   @override
