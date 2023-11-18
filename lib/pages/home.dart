@@ -17,7 +17,7 @@ class HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-    Option1(),
+    SurveyPage(),
     Option2(),
     // Option3(),
     ChatApp()
@@ -71,7 +71,6 @@ Widget build(BuildContext context) {
   );
 }
 
-
   Widget _buildBottomNavigationBar() {
     return CupertinoTabBar(
       currentIndex: _selectedIndex,
@@ -79,7 +78,7 @@ Widget build(BuildContext context) {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.book),
-          label: 'Home',
+          label: 'Plan',
         ),
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.search),
@@ -91,5 +90,18 @@ Widget build(BuildContext context) {
         ),
       ],
     );
+  }
+
+  String _getTitleForSelectedIndex(int index) {
+    switch (index) {
+      case 0:
+        return 'Plan';
+      case 1:
+        return 'Option 2';
+      case 2:
+        return 'Option 3';
+      default:
+        return 'Home';
+    }
   }
 }
