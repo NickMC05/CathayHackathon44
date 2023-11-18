@@ -9,8 +9,7 @@ class Profile extends StatelessWidget {
   final String disabilityType = 'Physical';
   final List<String> medicines = ['Medicine A', 'Medicine B', 'Medicine C'];
   final List<String> allergies = ['Allergy X', 'Allergy Y'];
-  final String profileImageUrl =
-      'https://example.com/profile_image.jpg'; // Replace with actual image URL
+  final String profileImageUrl = 'lib/components/user_profile/profile_picture.png'; // Replace with actual image file name
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +17,21 @@ class Profile extends StatelessWidget {
       title: 'Profile',
       home: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          title: Row(
+          automaticallyImplyLeading: false, // To remove the default back button
+          title: Stack(
+            alignment: Alignment.center,
             children: [
-              Expanded(
-                child: Center(
-                  child: Text('Profile'),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
+              ),
+              Center(
+                child: Text('Profile'),
               ),
             ],
           ),
@@ -41,7 +43,7 @@ class Profile extends StatelessWidget {
             Center(
               child: CircleAvatar(
                 radius: 60.0,
-                backgroundImage: NetworkImage(profileImageUrl),
+                backgroundImage: AssetImage(profileImageUrl),
               ),
             ),
             SizedBox(height: 32.0),
