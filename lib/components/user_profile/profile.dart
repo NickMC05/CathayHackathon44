@@ -71,7 +71,7 @@ class Profile extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.grey[300],
+        color: CupertinoColors.systemBlue,
       ),
       child: Row(
         children: [
@@ -97,7 +97,7 @@ class Profile extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.grey[300],
+        color: CupertinoColors.systemBlue,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

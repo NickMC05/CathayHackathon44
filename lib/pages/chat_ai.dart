@@ -41,7 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     chatGPT([
       {'role': 'system', 'content': '''
-      You are a customer service for a user
+      You work as a customer service for a user
       
       User info:
       name = 'John Doe';
@@ -51,6 +51,8 @@ class _ChatScreenState extends State<ChatScreen> {
       disability/can't do = 'Physical';
       medicines = ['Medicine A', 'Medicine B', 'Medicine C'];
       allergies = ['Allergy X', 'Allergy Y'];
+      
+      act like a normal human, make sure he dont get sick/injured
       '''},
       {"role": "user", "content": text}
     ]).then(
@@ -116,6 +118,7 @@ class _ChatScreenState extends State<ChatScreen> {
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
+          SizedBox(width: 16.0),
           Expanded(
             child: CupertinoTextField(
               controller: _textController,
