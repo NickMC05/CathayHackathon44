@@ -10,7 +10,6 @@ class SurveyPage extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<SurveyPage> createState() => _SurveyPageState();
-
 }
 
 class _SurveyPageState extends ConsumerState<SurveyPage> {
@@ -18,16 +17,30 @@ class _SurveyPageState extends ConsumerState<SurveyPage> {
 
   // 3 Types of Questions : single-select, multi-select, country-select
   final List<QuestionModel> questions = [
-    QuestionModel(question: "Where do you want to go?", type: "country-select", icon: Icons.public),
-    QuestionModel(question: "Accessories", type: "multi-select", icon: Icons.accessibility_rounded, choices: ["Wheelchair", "Walking Stick", "Earpiece", "Crutch", "Stroller"]),
-    QuestionModel(question: "Do you need special seating arrangement?", type: "single-select", icon: Icons.money, choices: ["Yes", "No"]),
+    QuestionModel(
+        question: "Where do you want to go?",
+        type: "country-select",
+        icon: Icons.public),
+    QuestionModel(
+        question: "Accessories",
+        type: "multi-select",
+        icon: Icons.accessibility_rounded,
+        choices: [
+          "Wheelchair",
+          "Walking Stick",
+          "Earpiece",
+          "Crutch",
+          "Stroller"
+        ]),
+    QuestionModel(
+        question: "Do you need special seating arrangement?",
+        type: "single-select",
+        icon: Icons.money,
+        choices: ["Yes", "No"]),
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
-
     void nextQuestion() {
       if (_currentIndex < questions.length - 1) {
         setState(() {
@@ -49,17 +62,21 @@ class _SurveyPageState extends ConsumerState<SurveyPage> {
               (index) => index == 0
                   ? const SizedBox(width: 20)
                   : GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        _currentIndex = index - 1;
-                      });
-                    },
-                    child: Container(
+                      onTap: () {
+                        setState(() {
+                          _currentIndex = index - 1;
+                        });
+                      },
+                      child: Container(
                         margin: const EdgeInsets.only(left: 5),
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
-                          color: ref.read(surveyProvider.notifier).isAnswered(questions[index-1].question) ? Color(0xff57b48d) : Colors.grey[300],
+                          color: ref
+                                  .read(surveyProvider.notifier)
+                                  .isAnswered(questions[index - 1].question)
+                              ? Color(0xff57b48d)
+                              : Colors.grey[300],
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Center(
@@ -69,7 +86,7 @@ class _SurveyPageState extends ConsumerState<SurveyPage> {
                           ),
                         ),
                       ),
-                  ),
+                    ),
             ),
           ),
         ),

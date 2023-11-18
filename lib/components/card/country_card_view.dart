@@ -76,8 +76,45 @@ class CountryRankView extends StatelessWidget {
                           style: const TextStyle(
                               fontWeight: FontWeight.w600, fontSize: 20),
                         ),
-                        Text("Overall score: ${info.score * 100}/100"),
-                        Expanded(child: Container()),
+                        Text("Accessibility: ${info.score * 100}/100"),
+                        Expanded(
+                            child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(children: [
+                              const SizedBox(width: 10),
+                              const Icon(
+                                Icons.car_crash,
+                                color: Colors.black,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(info.transportation.toString()),
+                              const SizedBox(width: 10),
+                              const Icon(
+                                Icons.car_crash,
+                                color: Colors.black,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(info.transportation.toString()),
+                            ]),
+                            Row(children: [
+                              const SizedBox(width: 10),
+                              const Icon(
+                                Icons.hotel,
+                                color: Colors.black,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(info.accomodation.toString()),
+                              const SizedBox(width: 10),
+                              const Icon(
+                                Icons.car_crash,
+                                color: Colors.black,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(info.transportation.toString()),
+                            ]),
+                          ],
+                        )),
                         Text("Start From: ${info.price}HKD"),
                         const SizedBox(height: 10),
                       ],
