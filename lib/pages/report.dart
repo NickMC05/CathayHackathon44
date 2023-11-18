@@ -97,6 +97,48 @@ class _ReportScreenState extends State<ReportScreen> {
                 height: 220.0,
                 child: TodoListWidget(),),
               SizedBox(height: 20.0),
+              Container(
+                padding: EdgeInsets.all(20.0),
+                child: const Row(
+                  children: [
+                    Text(
+                      "Allergies",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Spacer(),
+                    Icon(CupertinoIcons.check_mark_circled,
+                        color: CupertinoColors.activeGreen, size: 30)
+                  ],
+                ),
+              ),
+              Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    decoration: BoxDecoration(color: CupertinoColors.systemGrey6, borderRadius: BorderRadius.circular(20.0)),
+                    padding: EdgeInsets.all(10.0),
+                    // padding: EdgeInsets.all(20.0),
+                    child: Text("Seafood-free meal prepared", style: TextStyle(fontSize: 20),),
+              ),
+              SizedBox(height: 20.0),
+              Container(
+                padding: EdgeInsets.all(20.0),
+                child: const Row(
+                  children: [
+                    Text(
+                      "When you arrive",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
+              HorizontalSlider()
+
+
               // Text("Report Slider 1"),
             ],
           ),
