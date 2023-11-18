@@ -18,7 +18,21 @@ class Profile extends StatelessWidget {
       title: 'Profile',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Profile'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          title: Row(
+            children: [
+              Expanded(
+                child: Center(
+                  child: Text('Profile'),
+                ),
+              ),
+            ],
+          ),
         ),
         body: ListView(
           padding: EdgeInsets.all(16.0),
@@ -30,7 +44,7 @@ class Profile extends StatelessWidget {
                 backgroundImage: NetworkImage(profileImageUrl),
               ),
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height: 32.0),
             _buildProfileItem('Name', name),
             SizedBox(height: 16.0),
             _buildProfileItem('Age', age.toString()),
