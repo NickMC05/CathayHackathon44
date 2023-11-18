@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  final String name = 'John Doe';
-  final int age = 30;
+  final String name = 'Tin Hei';
+  final int age = 24;
   final String sex = 'Male';
-  final String country = 'United States';
-  final String disabilityType = 'Physical';
-  final List<String> medicines = ['Medicine A', 'Medicine B', 'Medicine C'];
-  final List<String> allergies = ['Allergy X', 'Allergy Y'];
+  final String country = 'Hong Kong';
+  final List<String> disabilityType = ['Asthma', 'Broken Leg', 'Visual Impairment'];
+  final List<String> tools = ['Wheelchair', 'Service Dog'];
+  final List<String> medicines = ['Oxygen Mask'];
+  final List<String> allergies = ['Seafood'];
   final String profileImageUrl = 'lib/components/user_profile/profile_picture.png'; // Replace with actual image file name
 
   @override
@@ -55,7 +56,9 @@ class Profile extends StatelessWidget {
             SizedBox(height: 16.0),
             _buildProfileItem('Country', country),
             SizedBox(height: 16.0),
-            _buildProfileItem('Disability Type', disabilityType),
+            _buildListProfileItem('Disability Type', disabilityType),
+            SizedBox(height: 16.0),
+            _buildListProfileItem('Tools', tools),
             SizedBox(height: 16.0),
             _buildListProfileItem('Medicines', medicines),
             SizedBox(height: 16.0),
