@@ -12,7 +12,7 @@ class GradualBlurCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10), // Rounded corners for the card
         image: DecorationImage(
-          image: Image.asset('assets/wheelchair_taxis_london.png').image,
+          image: Image.asset('assets/wheelchair.jpg').image,
           fit: BoxFit.cover,
         ),
       ),
@@ -26,7 +26,7 @@ class GradualBlurCard extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [CupertinoColors.systemGrey6.withOpacity(0), CupertinoColors.systemGrey6.withOpacity(0.8)],
+                    colors: [CupertinoColors.systemGrey6.withOpacity(0), CupertinoColors.systemGrey6.withOpacity(0.9)],
                   ),
                 ),
               ),
