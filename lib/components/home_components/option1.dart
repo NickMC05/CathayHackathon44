@@ -15,7 +15,13 @@ class Option1 extends StatelessWidget {
           CupertinoButton(
             child: const Text('Run'),
             onPressed: () async {
-              mickey();
+              chatGPT([
+                {
+                  "role": "system",
+                  "content":
+                      "You are an AI assistant that helps people find information."
+                }
+              ]);
             },
           ),
         ],
