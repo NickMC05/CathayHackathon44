@@ -1,16 +1,12 @@
-# cathay
+# Flymate
 
-A new Flutter project.
+This is an app to support travelling for people with disabilities by providing support for documentations, accomodations and other potential needs.
 
-## Getting Started
+## How to run this app
 
-This project is a starting point for a Flutter application.
+This is a standard flutter app, so you can git clone to get a copy of the repo on your local system and run it using standard Flutter instructions.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Open-source
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+We have kept source-code open-source and if you would like to contribute to the idea or take it further, feel free to do so.
