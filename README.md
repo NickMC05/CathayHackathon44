@@ -2,7 +2,7 @@
 
 This is an app to support travelling for people with disabilities by providing support for documentations, accomodations and other potential needs.
 
-This app was developed during the Cathay Hackathon 2024.
+This app was developed during the Cathay Hackathon 2023.
 
 ## How to run this app
 
